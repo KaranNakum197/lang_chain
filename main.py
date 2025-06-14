@@ -1,28 +1,41 @@
 import os
 import streamlit as st
-import langchain_community
 from dotenv import load_dotenv
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.agents import initialize_agent, Tool
-from langchain.chat_models import ChatOpenAI
 from langchain.tools import DuckDuckGoSearchRun
 from agent_tools import get_tools
 
+# Load API key
 load_dotenv()
-llm = ChatOpenAI(temperature=0)
+google_api_key = os.getenv("GOOGLE_API_KEY")
 
+if not google_api_key:
+    st.error("🚨 GOOGLE_API_KEY not found. Please check your .env or Streamlit secrets.")
+    st.stop()
+
+# Initialize Gemini LLM
+llm = ChatGoogleGenerativeAI(
+    model="gemini-pro",
+    temperature=0.5,
+    google_api_key=google_api_key
+)
+
+# Tools
 search = DuckDuckGoSearchRun()
 tools = get_tools(search)
 
+# Agent
 agent = initialize_agent(tools, llm, agent_type="zero-shot-react-description", verbose=True)
 
-st.set_page_config(page_title="ChatGPT with Tools", page_icon="🤖")
-st.title("🧠 ChatGPT with Tools")
-st.markdown("Ask anything. It can calculate, search, and reason!")
+# Streamlit UI
+st.set_page_config(page_title="Gemini ChatBot with Tools", page_icon="🧠")
+st.title("🧠 Gemini ChatBot + Tools")
 
 if "history" not in st.session_state:
     st.session_state.history = []
 
-user_input = st.text_input("Your Question")
+user_input = st.text_input("Ask me anything...")
 
 if user_input:
     with st.spinner("Thinking..."):
