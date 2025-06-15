@@ -1,7 +1,7 @@
 import os
 import streamlit as st
 from dotenv import load_dotenv
-from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain import ChatGoogleGenerativeA
 from langchain.agents import initialize_agent, AgentType
 from langchain.tools import DuckDuckGoSearchRun
 from langchain.schema import SystemMessage
