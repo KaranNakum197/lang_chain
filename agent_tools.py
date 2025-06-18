@@ -1,7 +1,3 @@
-"""
-Custom tools for the Gemini chatbot agent
-"""
-
 from langchain.tools import Tool
 from langchain.tools import DuckDuckGoSearchRun
 import requests
