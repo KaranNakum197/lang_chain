@@ -6,10 +6,7 @@ from datetime import datetime
 import calendar
 
 def get_tools(search_tool=None):
-    """
-    Returns a list of custom tools for the agent
-    """
-    
+  
     # Initialize search if not provided
     if search_tool is None:
         search_tool = DuckDuckGoSearchRun()
