@@ -13,7 +13,7 @@ def get_tools(search_tool=None):
     
     # Calculator tool
     def calculator(expression):
-        """Safely evaluate mathematical expressions"""
+       
         try:
             # Remove any potentially dangerous characters
             allowed_chars = "0123456789+-*/.() "
