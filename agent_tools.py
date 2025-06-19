@@ -27,7 +27,7 @@ def get_tools(search_tool=None):
         now = datetime.now()
         return f"Current date and time: {now.strftime('%Y-%m-%d %H:%M:%S')}"
     
-    # Weather tool (using a free API)
+
     def get_weather(city):
         """Get weather information for a city"""
         try:
