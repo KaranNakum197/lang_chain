@@ -22,7 +22,6 @@ def get_tools(search_tool=None):
         except Exception as e:
             return f"Error calculating {expression}: {str(e)}"
     
-    # Current time tool
     def get_current_time():
         """Get current date and time"""
         now = datetime.now()
