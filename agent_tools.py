@@ -10,8 +10,7 @@ def get_tools(search_tool=None):
     # Initialize search if not provided
     if search_tool is None:
         search_tool = DuckDuckGoSearchRun()
-    
-    # Calculator tool
+  
     def calculator(expression):
        
         try:
