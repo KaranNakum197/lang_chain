@@ -24,7 +24,6 @@ st.markdown("*Powered by Google Gemini and DuckDuckGo Search*")
 with st.sidebar:
     st.header("Configuration")
     
-    # API Key input
     google_api_key = st.text_input(
         "Google API Key", 
         value=os.getenv("GOOGLE_API_KEY", ""),
